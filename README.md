@@ -3,3 +3,4 @@
 //José Manoel Borges Neto - Commit
 //Henrique Tomasi de Araujo - Commit
 //Arthur Felipe Paredes Gonçalves
+//Luiza Ribeiro Tavares - Commit

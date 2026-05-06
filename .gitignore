@@ -1,0 +1,3 @@
+Gerenciador.exe
+build/*.o
+!build/.keep

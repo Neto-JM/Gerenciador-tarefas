@@ -1,8 +1,3 @@
-Você tinha razão 😅
-O problema foi que eu coloquei o Markdown *dentro* de um bloco de código, aí ficou estranho visualmente.
-
-O `.md` correto é simplesmente o texto formatado assim no arquivo `README.md`:
-
 # Gerenciador de Tarefas
 
 ## Problema
@@ -37,8 +32,6 @@ Desenvolver um sistema em C++ para gerenciamento de tarefas, utilizando conceito
 * Filtros por status, prioridade e data
 * Identificação de tarefas vencidas
 * Persistência de dados em arquivos locais
-
-Isso você cola direto no `README.md` do GitHub que ele já fica bonitinho formatado automaticamente.
 
 ```
 

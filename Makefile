@@ -1,5 +1,7 @@
+all: Gerenciador.exe
+
 Gerenciador.exe: build/main.o build/Arquivo.o build/Categoria.o build/GerenciadorDeTarefas.o build/Historico.o build/Tarefa.o
-	c++ -I include  build/main.o build/Arquivo.o build/Categoria.o build/GerenciadorDeTarefas.o build/Historico.o build/Tarefa.o -o Gerenciador.exe
+	c++ -I include build/main.o build/Arquivo.o build/Categoria.o build/GerenciadorDeTarefas.o build/Historico.o build/Tarefa.o -o Gerenciador.exe
 
 build/Arquivo.o: src/Arquivo.cpp include/Arquivo.h
 	c++ -I include -c src/Arquivo.cpp -o build/Arquivo.o
@@ -18,3 +20,6 @@ build/Tarefa.o: src/Tarefa.cpp include/Tarefa.h
 
 build/main.o: src/main.cpp
 	c++ -I include -c src/main.cpp -o build/main.o
+
+run: Gerenciador.exe
+	./Gerenciador.exe

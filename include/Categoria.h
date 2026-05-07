@@ -5,12 +5,22 @@
 
 class Categoria {
 private:
+    int id;
     std::string nome;
 
 public:
-    Categoria(const std::string& nome);
 
+    // Construtor da categoria
+    // Deve inicializar o id e o nome da categoria
+    Categoria(int id, const std::string& nome);
+
+    // Retorna o identificador da categoria
+    int getId() const;
+
+    // Retorna o nome da categoria
     std::string getNome() const;
+
+    // Define um novo nome para a categoria
     void setNome(const std::string& nome);
 };
 

@@ -27,11 +27,15 @@ void Tarefa::marcarConcluida() {
 
 bool Tarefa::estaVencida() const {
     if (status == Status::CONCLUIDA) return false;
+    if (prazo.size() != 10) return false; // formato invalido
 
     int dia, mes, ano;
-    char sep;
+    char sep1, sep2;
     std::istringstream ss(prazo);
-    ss >> dia >> sep >> mes >> sep >> ano;
+    ss >> dia >> sep1 >> mes >> sep2 >> ano;
+
+    if (ss.fail() || sep1 != '/' || sep2 != '/') return false;
+    if (dia < 1 || dia > 31 || mes < 1 || mes > 12 || ano < 1900) return false;
 
     time_t agora = time(nullptr);
     struct tm* hoje = localtime(&agora);

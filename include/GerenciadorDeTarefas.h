@@ -62,8 +62,20 @@ public:
     // Retorna tarefas vencidas
     std::vector<Tarefa> listarVencidas() const;
 
-    // Salva as tarefas em arquivo
-    void salvar(const std::string& caminho) const;
+    // Adiciona uma categoria ao sistema (valida duplicatas)
+    void adicionarCategoria(const std::string& nome);
+
+    // Verifica se uma categoria existe
+    bool categoriaExiste(const std::string& nome) const;
+
+    // Retorna todos os nomes de categorias cadastradas
+    std::vector<std::string> listarCategorias() const;
+
+    // Exibe o historico de acoes
+    void exibirHistorico() const;
+
+    // Salva as tarefas em arquivo (nao-const para registrar no historico)
+    void salvar(const std::string& caminho);
 
     // Carrega tarefas salvas em arquivo
     void carregar(const std::string& caminho);

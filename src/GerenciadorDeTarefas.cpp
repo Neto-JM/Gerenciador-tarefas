@@ -6,8 +6,6 @@
 
 GerenciadorDeTarefas::GerenciadorDeTarefas() : proximoId(1) {}
 
-// ---------- Categorias ----------
-
 void GerenciadorDeTarefas::adicionarCategoria(const std::string& nome) {
     if (categoriaExiste(nome)) {
         throw std::runtime_error("Categoria '" + nome + "' ja existe.");
@@ -31,8 +29,6 @@ std::vector<std::string> GerenciadorDeTarefas::listarCategorias() const {
     }
     return nomes;
 }
-
-// ---------- Tarefas ----------
 
 void GerenciadorDeTarefas::adicionarTarefa(const std::string& titulo,
                                             const std::string& descricao,
@@ -96,8 +92,6 @@ void GerenciadorDeTarefas::marcarConcluida(int id) {
     throw std::runtime_error("Tarefa com ID " + std::to_string(id) + " nao encontrada.");
 }
 
-// ---------- Listagem e filtros ----------
-
 std::vector<Tarefa> GerenciadorDeTarefas::listarTarefas() const {
     // Ordenado por prioridade (Alta > Media > Baixa) e depois por prazo
     std::vector<Tarefa> copia = tarefas;
@@ -147,13 +141,9 @@ std::vector<Tarefa> GerenciadorDeTarefas::listarVencidas() const {
     return resultado;
 }
 
-// ---------- Historico ----------
-
 void GerenciadorDeTarefas::exibirHistorico() const {
     historico.exibirHistorico();
 }
-
-// ---------- Persistencia ----------
 
 void GerenciadorDeTarefas::salvar(const std::string& caminho) {
     Arquivo::salvar(caminho, tarefas);

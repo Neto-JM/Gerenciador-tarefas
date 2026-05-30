@@ -6,7 +6,6 @@
 
 const std::string ARQUIVO_DADOS = "tarefas.txt";
 
-// ---------- helpers de exibicao ----------
 
 std::string prioridadeStr(Prioridade p) {
     switch (p) {
@@ -41,8 +40,6 @@ void exibirTarefas(const std::vector<Tarefa>& lista) {
     std::cout << "-------------------------------------------\n";
 }
 
-// ---------- validacao de prazo ----------
-
 bool validarPrazo(const std::string& prazo) {
     std::regex fmt(R"(\d{2}/\d{2}/\d{4})");
     if (!std::regex_match(prazo, fmt)) return false;
@@ -65,8 +62,6 @@ std::string lerPrazo() {
     }
 }
 
-// ---------- leitura de entradas ----------
-
 Prioridade lerPrioridade() {
     while (true) {
         std::cout << "Prioridade (0=Baixa, 1=Media, 2=Alta): ";
@@ -83,8 +78,6 @@ bool confirmar(const std::string& mensagem) {
     char c; std::cin >> c; std::cin.ignore();
     return c == 's' || c == 'S';
 }
-
-// ---------- submenu listar ----------
 
 void menuListar(GerenciadorDeTarefas& g) {
     std::cout << "\n[1] Todas  [2] Por status  [3] Por prioridade  [4] Por categoria  [5] Vencidas\n";
@@ -125,8 +118,6 @@ void menuListar(GerenciadorDeTarefas& g) {
         std::cout << "Opcao invalida.\n";
     }
 }
-
-// ---------- main ----------
 
 int main() {
     GerenciadorDeTarefas gerenciador;

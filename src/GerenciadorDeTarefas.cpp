@@ -172,3 +172,49 @@ void GerenciadorDeTarefas::carregar(const std::string& caminho) {
 
     historico.registrarAcao("Tarefas carregadas de: " + caminho);
 }
+
+// busca por palavra
+std::vector<Tarefa> GerenciadorDeTarefas::buscarPorTitulo(const std::string& termo) const {
+    std::vector<Tarefa> resultado;
+    for (const Tarefa& t : tarefas) {
+        // O find retorna npos quando NAO encontra o texto. 
+        // Entao se for diferente de npos, é porque achou!
+        if (t.getTitulo().find(termo) != std::string::npos) {
+            resultado.push_back(t);
+        }
+    }
+    return resultado;
+}
+
+// exibe as estatisticas gerais do sistema
+void GerenciadorDeTarefas::exibirEstatisticas() const {
+    if (tarefas.empty()) {
+        std::cout << "Nenhuma tarefa cadastrada no momento.\n";
+        return;
+    }
+
+    int concluidas = 0;
+    int pendentes = 0;
+    int vencidas = 0;
+
+    for (const Tarefa& t : tarefas) {
+        if (t.getStatus() == Status::CONCLUIDA) {
+            concluidas++;
+        } else {
+            pendentes++;
+            if (t.estaVencida()) {
+                vencidas++;
+            }
+        }
+    }
+
+    int total = static_cast<int>(tarefas.size());
+    int porcentagem = (concluidas * 100) / total;
+
+    std::cout << "\n=== RESUMO DE PRODUTIVIDADE ===\n";
+    std::cout << "Total de tarefas : " << total << "\n";
+    std::cout << "Concluidas       : " << concluidas << " (" << porcentagem << "%)\n";
+    std::cout << "Pendentes        : " << pendentes << "\n";
+    std::cout << "Atrasadas        : " << vencidas << "\n";
+    std::cout << "===============================\n\n";
+}

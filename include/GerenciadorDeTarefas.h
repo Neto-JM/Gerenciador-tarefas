@@ -10,7 +10,7 @@
 
 class GerenciadorDeTarefas {
 private:
-    std::vector<Tarefa> tarefas;
+    std::vector<Tarefa*> tarefas;
     std::vector<Categoria> categorias;
     Historico historico;
 
@@ -18,20 +18,20 @@ private:
 
 public:
 
-    // Construtor do gerenciador
-    // Deve inicializar o contador de IDs
+    // Construtor
     GerenciadorDeTarefas();
 
+    // Destrutor: Libera a memoria alocada com 'new'
+    ~GerenciadorDeTarefas();
+
     // Adiciona uma nova tarefa ao sistema
-    // Deve criar a tarefa e armazená-la no vetor
     void adicionarTarefa(const std::string& titulo,
                          const std::string& descricao,
                          const std::string& prazo,
                          Prioridade prioridade,
                          const std::string& categoria);
 
-    // Edita uma tarefa existente
-    // Deve validar se o ID informado existe
+    // ... (assinaturas seguem, mas retornando ponteiros)
     void editarTarefa(int id,
                       const std::string& titulo,
                       const std::string& descricao,
@@ -39,28 +39,15 @@ public:
                       Prioridade prioridade,
                       const std::string& categoria);
 
-    // Remove uma tarefa do sistema
-    // Deve validar se o ID existe antes da remoção
     void removerTarefa(int id);
-
-    // Marca uma tarefa como concluída
-    // Deve alterar o status da tarefa correspondente
     void marcarConcluida(int id);
 
-    // Retorna todas as tarefas cadastradas
-    std::vector<Tarefa> listarTarefas() const;
-
-    // Filtra tarefas por status
-    std::vector<Tarefa> filtrarPorStatus(Status status) const;
-
-    // Filtra tarefas por prioridade
-    std::vector<Tarefa> filtrarPorPrioridade(Prioridade prioridade) const;
-
-    // Filtra tarefas por categoria
-    std::vector<Tarefa> filtrarPorCategoria(const std::string& categoria) const;
-
-    // Retorna tarefas vencidas
-    std::vector<Tarefa> listarVencidas() const;
+    // Retorna ponteiros para as tarefas para permitir polimorfismo
+    std::vector<Tarefa*> listarTarefas() const;
+    std::vector<Tarefa*> filtrarPorStatus(Status status) const;
+    std::vector<Tarefa*> filtrarPorPrioridade(Prioridade prioridade) const;
+    std::vector<Tarefa*> filtrarPorCategoria(const std::string& categoria) const;
+    std::vector<Tarefa*> listarVencidas() const;
 
     // Adiciona uma categoria ao sistema (valida duplicatas)
     void adicionarCategoria(const std::string& nome);

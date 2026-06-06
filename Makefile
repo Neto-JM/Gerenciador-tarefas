@@ -1,7 +1,7 @@
 all: Gerenciador.exe
 
-Gerenciador.exe: build/main.o build/Arquivo.o build/Categoria.o build/GerenciadorDeTarefas.o build/Historico.o build/Tarefa.o
-	c++ -I include build/main.o build/Arquivo.o build/Categoria.o build/GerenciadorDeTarefas.o build/Historico.o build/Tarefa.o -o Gerenciador.exe
+Gerenciador.exe: build/main.o build/Arquivo.o build/Categoria.o build/GerenciadorDeTarefas.o build/Historico.o build/Tarefa.o build/TarefaComPrazo.o build/TarefaSimples.o
+	c++ -I include build/main.o build/Arquivo.o build/Categoria.o build/GerenciadorDeTarefas.o build/Historico.o build/Tarefa.o build/TarefaComPrazo.o build/TarefaSimples.o -o Gerenciador.exe
 
 build/Arquivo.o: src/Arquivo.cpp include/Arquivo.h
 	c++ -I include -c src/Arquivo.cpp -o build/Arquivo.o
@@ -17,6 +17,12 @@ build/Historico.o: src/Historico.cpp include/Historico.h
 
 build/Tarefa.o: src/Tarefa.cpp include/Tarefa.h
 	c++ -I include -c src/Tarefa.cpp -o build/Tarefa.o
+
+build/TarefaComPrazo.o: src/TarefaComPrazo.cpp include/TarefaComPrazo.h
+	c++ -I include -c src/TarefaComPrazo.cpp -o build/TarefaComPrazo.o
+
+build/TarefaSimples.o: src/TarefaSimples.cpp include/TarefaSimples.h
+	c++ -I include -c src/TarefaSimples.cpp -o build/TarefaSimples.o
 
 build/main.o: src/main.cpp
 	c++ -I include -c src/main.cpp -o build/main.o

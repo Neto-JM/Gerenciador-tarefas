@@ -20,27 +20,28 @@ std::string statusStr(Status s) {
     return s == Status::CONCLUIDA ? "Concluida" : "Pendente";
 }
 
-void exibirTarefas(const std::vector<Tarefa>& lista) {
+void exibirTarefas(const std::vector<Tarefa*>& lista) {
     if (lista.empty()) {
         std::cout << "Nenhuma tarefa encontrada.\n";
         return;
     }
     std::cout << "\n";
-    for (const Tarefa& t : lista) {
+    for (const Tarefa* t : lista) {
         std::cout << "-------------------------------------------\n";
-        std::cout << "ID        : " << t.getId() << "\n";
-        std::cout << "Titulo    : " << t.getTitulo() << "\n";
-        std::cout << "Descricao : " << t.getDescricao() << "\n";
-        std::cout << "Prazo     : " << t.getPrazo() << "\n";
-        std::cout << "Prioridade: " << prioridadeStr(t.getPrioridade()) << "\n";
-        std::cout << "Categoria : " << t.getCategoria() << "\n";
-        std::cout << "Status    : " << statusStr(t.getStatus()) << "\n";
-        if (t.estaVencida()) std::cout << "*** VENCIDA ***\n";
+        std::cout << "ID        : " << t->getId() << "\n";
+        std::cout << "Titulo    : " << t->getTitulo() << "\n";
+        std::cout << "Descricao : " << t->getDescricao() << "\n";
+        std::cout << "Prazo     : " << t->getPrazo() << "\n";
+        std::cout << "Prioridade: " << prioridadeStr(t->getPrioridade()) << "\n";
+        std::cout << "Categoria : " << t->getCategoria() << "\n";
+        std::cout << "Status    : " << statusStr(t->getStatus()) << "\n";
+        if (t->estaVencida()) std::cout << "*** VENCIDA ***\n";
     }
     std::cout << "-------------------------------------------\n";
 }
 
 bool validarPrazo(const std::string& prazo) {
+    if (prazo.empty()) return true;
     std::regex fmt(R"(\d{2}/\d{2}/\d{4})");
     if (!std::regex_match(prazo, fmt)) return false;
     int dia  = std::stoi(prazo.substr(0, 2));
@@ -55,8 +56,9 @@ bool validarPrazo(const std::string& prazo) {
 std::string lerPrazo() {
     std::string prazo;
     while (true) {
-        std::cout << "Prazo (DD/MM/AAAA): ";
+        std::cout << "Prazo (DD/MM/AAAA) ou [Enter] para tarefa simples: ";
         std::getline(std::cin, prazo);
+        if (prazo.empty()) return "";
         if (validarPrazo(prazo)) return prazo;
         std::cout << "Formato invalido. Use DD/MM/AAAA (ex: 31/12/2025).\n";
     }

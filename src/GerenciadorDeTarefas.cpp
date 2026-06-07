@@ -149,6 +149,14 @@ std::vector<Tarefa*> GerenciadorDeTarefas::filtrarPorCategoria(const std::string
     return resultado;
 }
 
+std::vector<Tarefa*> GerenciadorDeTarefas::filtrarPorData(const std::string& data) const {
+    std::vector<Tarefa*> resultado;
+    for (Tarefa* t : listarTarefas()) {
+        if (t->getPrazo() == data) resultado.push_back(t);
+    }
+    return resultado;
+}
+
 std::vector<Tarefa*> GerenciadorDeTarefas::listarVencidas() const {
     std::vector<Tarefa*> resultado;
     for (Tarefa* t : listarTarefas()) {

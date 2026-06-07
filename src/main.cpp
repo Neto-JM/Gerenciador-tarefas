@@ -82,7 +82,7 @@ bool confirmar(const std::string& mensagem) {
 }
 
 void menuListar(GerenciadorDeTarefas& g) {
-    std::cout << "\n[1] Todas  [2] Por status  [3] Por prioridade  [4] Por categoria  [5] Vencidas\n";
+std::cout << "\n[1] Todas  [2] Por status  [3] Por prioridade  [4] Por categoria  [5] Vencidas  [6] Por data\n";
     std::cout << "Opcao: ";
     int op; std::cin >> op; std::cin.ignore();
 
@@ -116,10 +116,18 @@ void menuListar(GerenciadorDeTarefas& g) {
     } else if (op == 5) {
         exibirTarefas(g.listarVencidas());
 
-    } else {
+    } else if (op == 6) {
+    std::string data;
+    while (true) {
+        std::cout << "Data (DD/MM/AAAA): ";
+        std::getline(std::cin, data);
+        if (validarPrazo(data) && !data.empty()) break;
+        std::cout << "Formato invalido. Use DD/MM/AAAA (ex: 31/12/2025).\n";
+    } 
+    exibirTarefas(g.filtrarPorData(data))
+}else {
         std::cout << "Opcao invalida.\n";
     }
-}
 
 int main() {
     GerenciadorDeTarefas gerenciador;

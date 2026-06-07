@@ -141,9 +141,11 @@ int main() {
         std::cout << "[3] Remover tarefa\n";
         std::cout << "[4] Marcar como concluida\n";
         std::cout << "[5] Listar tarefas\n";
-        std::cout << "[6] Historico de acoes\n";
-        std::cout << "[7] Gerenciar categorias\n";
-        std::cout << "[8] Salvar\n";
+        std::cout << "[6] Buscar tarefa por titulo\n";
+        std::cout << "[7] Estatisticas de produtividade\n";
+        std::cout << "[8] Historico de acoes\n";
+        std::cout << "[9] Gerenciar categorias\n";
+        std::cout << "[10] Salvar\n";
         std::cout << "[0] Sair\n";
         std::cout << "Opcao: ";
         std::cin >> opcao; std::cin.ignore();
@@ -203,9 +205,17 @@ int main() {
                 menuListar(gerenciador);
 
             } else if (opcao == 6) {
-                gerenciador.exibirHistorico();
+                std::cout << "Digite o termo para busca: ";
+                std::string termo; std::getline(std::cin, termo);
+                exibirTarefas(gerenciador.buscarPorTitulo(termo));
 
             } else if (opcao == 7) {
+                gerenciador.exibirEstatisticas();
+
+            } else if (opcao == 8) {
+                gerenciador.exibirHistorico();
+
+            } else if (opcao == 9) {
                 std::vector<std::string> cats = gerenciador.listarCategorias();
                 std::cout << "\n=== Categorias cadastradas ===\n";
                 if (cats.empty()) {
@@ -220,7 +230,7 @@ int main() {
                     std::cout << "Categoria '" << nova << "' adicionada!\n";
                 }
 
-            } else if (opcao == 8) {
+            } else if (opcao == 10) {
                 gerenciador.salvar(ARQUIVO_DADOS);
                 std::cout << "Tarefas salvas em '" << ARQUIVO_DADOS << "'.\n";
 

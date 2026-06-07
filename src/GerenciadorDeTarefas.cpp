@@ -171,18 +171,18 @@ void GerenciadorDeTarefas::carregar(const std::string& caminho) {
 
     // Reconstroi categorias a partir das tarefas carregadas
     categorias.clear();
-    for (const Tarefa& t : tarefas) {
-        if (!categoriaExiste(t.getCategoria())) {
+    for (const Tarefa* t : tarefas) {
+        if (!categoriaExiste(t->getCategoria())) {
             int novoId = static_cast<int>(categorias.size()) + 1;
-            categorias.push_back(Categoria(novoId, t.getCategoria()));
+            categorias.push_back(Categoria(novoId, t->getCategoria()));
         }
     }
 
     // Ajusta proximoId para evitar colisoes
     proximoId = 1;
-    for (const Tarefa& t : tarefas) {
-        if (t.getId() >= proximoId) {
-            proximoId = t.getId() + 1;
+    for (const Tarefa* t : tarefas) {
+        if (t->getId() >= proximoId) {
+            proximoId = t->getId() + 1;
         }
     }
 
@@ -190,12 +190,10 @@ void GerenciadorDeTarefas::carregar(const std::string& caminho) {
 }
 
 // busca por palavra
-std::vector<Tarefa> GerenciadorDeTarefas::buscarPorTitulo(const std::string& termo) const {
-    std::vector<Tarefa> resultado;
-    for (const Tarefa& t : tarefas) {
-        // O find retorna npos quando NAO encontra o texto. 
-        // Entao se for diferente de npos, é porque achou!
-        if (t.getTitulo().find(termo) != std::string::npos) {
+std::vector<Tarefa*> GerenciadorDeTarefas::buscarPorTitulo(const std::string& termo) const {
+    std::vector<Tarefa*> resultado;
+    for (Tarefa* t : tarefas) {
+        if (t->getTitulo().find(termo) != std::string::npos) {
             resultado.push_back(t);
         }
     }
@@ -213,12 +211,12 @@ void GerenciadorDeTarefas::exibirEstatisticas() const {
     int pendentes = 0;
     int vencidas = 0;
 
-    for (const Tarefa& t : tarefas) {
-        if (t.getStatus() == Status::CONCLUIDA) {
+    for (const Tarefa* t : tarefas) {
+        if (t->getStatus() == Status::CONCLUIDA) {
             concluidas++;
         } else {
             pendentes++;
-            if (t.estaVencida()) {
+            if (t->estaVencida()) {
                 vencidas++;
             }
         }

@@ -68,7 +68,7 @@ public:
     void carregar(const std::string& caminho);
 
     // busca por palavra chave
-    std::vector<Tarefa> buscarPorTitulo(const std::string& termo) const;
+    std::vector<Tarefa*> buscarPorTitulo(const std::string& termo) const;
 
     //caso seja uma tarefa que conclui parcialmente control oq ja fez
     void exibirEstatisticas() const;

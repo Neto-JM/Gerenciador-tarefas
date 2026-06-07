@@ -48,11 +48,15 @@ bool validarPrazo(const std::string& prazo) {
     int mes  = std::stoi(prazo.substr(3, 2));
     int ano  = std::stoi(prazo.substr(6, 4));
     if (mes < 1 || mes > 12) return false;
-    if (dia < 1 || dia > 31) return false;
     if (ano < 1900 || ano > 2100) return false;
+
+    int diasNoMes[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    bool bissexto = (ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0);
+    if (mes == 2 && bissexto) diasNoMes[1] = 29;
+
+    if (dia < 1 || dia > diasNoMes[mes - 1]) return false;
     return true;
 }
-
 std::string lerPrazo() {
     std::string prazo;
     while (true) {

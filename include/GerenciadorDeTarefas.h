@@ -47,7 +47,7 @@ public:
     std::vector<Tarefa*> filtrarPorStatus(Status status) const;
     std::vector<Tarefa*> filtrarPorPrioridade(Prioridade prioridade) const;
     std::vector<Tarefa*> filtrarPorCategoria(const std::string& categoria) const;
-    std::vector<Tarefa*>filtrarPorData(cont std::string& data) const;
+    std::vector<Tarefa*> filtrarPorData(const std::string& data) const;
     std::vector<Tarefa*> listarVencidas() const;
 
     // Adiciona uma categoria ao sistema (valida duplicatas)

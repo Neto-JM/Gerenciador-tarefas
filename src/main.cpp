@@ -124,11 +124,11 @@ std::cout << "\n[1] Todas  [2] Por status  [3] Por prioridade  [4] Por categoria
         if (validarPrazo(data) && !data.empty()) break;
         std::cout << "Formato invalido. Use DD/MM/AAAA (ex: 31/12/2025).\n";
     } 
-    exibirTarefas(g.filtrarPorData(data))
-}else {
+    exibirTarefas(g.filtrarPorData(data));
+} else {
         std::cout << "Opcao invalida.\n";
     }
-
+}
 int main() {
     GerenciadorDeTarefas gerenciador;
     gerenciador.carregar(ARQUIVO_DADOS);

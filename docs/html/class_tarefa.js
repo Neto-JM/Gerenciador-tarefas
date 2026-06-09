@@ -1,0 +1,26 @@
+var class_tarefa =
+[
+    [ "Tarefa", "class_tarefa.html#a2ede72596c2e4796cfe2af160be46661", null ],
+    [ "~Tarefa", "class_tarefa.html#a5a121a03a15aca897547bdb8d5d5758c", null ],
+    [ "estaVencida", "class_tarefa.html#a1f823d4e5ba1d83becb9b2079bd54511", null ],
+    [ "getCategoria", "class_tarefa.html#a5415a8a168b44534ffa27a1883b48b1b", null ],
+    [ "getDescricao", "class_tarefa.html#a55ac0323625949d76b2bf98cec73f6e1", null ],
+    [ "getId", "class_tarefa.html#ad5d08f27ceaabbaaac6850f70c4b4788", null ],
+    [ "getPrazo", "class_tarefa.html#a724051bffa09f3b6da85aad088cf5ab7", null ],
+    [ "getPrioridade", "class_tarefa.html#a077b2003bed5dd8a4ee27bdd8f495564", null ],
+    [ "getStatus", "class_tarefa.html#ab23b2b5e568bea6cb2cb72c00d1dc8f4", null ],
+    [ "getTitulo", "class_tarefa.html#ad5dba190bcf81866ab1b8a7e7cfb9213", null ],
+    [ "marcarConcluida", "class_tarefa.html#afe2cd20a19be5814e66567972d8a588c", null ],
+    [ "setCategoria", "class_tarefa.html#a3d53f7154c849db3d5bc749c314cdf33", null ],
+    [ "setDescricao", "class_tarefa.html#ac916222ebde51c7a107d72f23f860482", null ],
+    [ "setPrazo", "class_tarefa.html#a1f864be28064939dc997a1a19339ff57", null ],
+    [ "setPrioridade", "class_tarefa.html#a2d6948fd0d7f52643c819e07f1bb8f65", null ],
+    [ "setTitulo", "class_tarefa.html#afb28eca6bf845db2e72927761f0e5386", null ],
+    [ "categoria", "class_tarefa.html#a13e5eac2077b26db86095b45219fedd8", null ],
+    [ "descricao", "class_tarefa.html#ab74879abecd79317ac0bb4b08cc1924b", null ],
+    [ "id", "class_tarefa.html#aed38d3bbfc9bef80b2aaca7f15c10170", null ],
+    [ "prazo", "class_tarefa.html#acb53d98f35325fa1e5b5fd40c0c321ba", null ],
+    [ "prioridade", "class_tarefa.html#ab579f0d45c84c2ef915f02be2e799246", null ],
+    [ "status", "class_tarefa.html#ab7664866def287795cf02aa3053f089c", null ],
+    [ "titulo", "class_tarefa.html#a967cdb1867ce66e7d0341f815aad599b", null ]
+];

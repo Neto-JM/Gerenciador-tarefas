@@ -1,12 +1,26 @@
+/**
+ * @file main.cpp
+ * @brief Ponto de entrada do Gerenciador de Tarefas.
+ *
+ * Implementa o menu interativo de linha de comando que permite ao usuário
+ * adicionar, editar, remover, listar, filtrar e buscar tarefas, além de
+ * gerenciar categorias, visualizar estatísticas, histórico e persistir os dados.
+ */
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include <regex>
 #include "GerenciadorDeTarefas.h"
 
+/// Caminho padrão do arquivo de persistência de tarefas.
 const std::string ARQUIVO_DADOS = "tarefas.txt";
 
-
+/**
+ * @brief Converte um enum Prioridade em string legível.
+ * @param p Prioridade a converter.
+ * @return String "Baixa", "Media" ou "Alta".
+ */
 std::string prioridadeStr(Prioridade p) {
     switch (p) {
         case Prioridade::BAIXA: return "Baixa";
@@ -16,10 +30,23 @@ std::string prioridadeStr(Prioridade p) {
     return "?";
 }
 
+/**
+ * @brief Converte um enum Status em string legível.
+ * @param s Status a converter.
+ * @return "Concluida" ou "Pendente".
+ */
 std::string statusStr(Status s) {
     return s == Status::CONCLUIDA ? "Concluida" : "Pendente";
 }
 
+/**
+ * @brief Exibe uma lista de tarefas formatada no console.
+ *
+ * Para cada tarefa exibe id, título, descrição, prazo, prioridade,
+ * categoria e status. Tarefas vencidas recebem marcação "*** VENCIDA ***".
+ *
+ * @param lista Vetor de ponteiros para as tarefas a exibir.
+ */
 void exibirTarefas(const std::vector<Tarefa*>& lista) {
     if (lista.empty()) {
         std::cout << "Nenhuma tarefa encontrada.\n";
@@ -40,6 +67,15 @@ void exibirTarefas(const std::vector<Tarefa*>& lista) {
     std::cout << "-------------------------------------------\n";
 }
 
+/**
+ * @brief Valida se uma string representa uma data no formato DD/MM/AAAA.
+ *
+ * Verifica o formato via expressão regular e depois confere a validade
+ * dos valores de dia, mês e ano, incluindo anos bissextos.
+ *
+ * @param prazo String com a data a validar.
+ * @return true se a data for válida ou se a string for vazia (sem prazo), false caso contrário.
+ */
 bool validarPrazo(const std::string& prazo) {
     if (prazo.empty()) return true;
     std::regex fmt(R"(\d{2}/\d{2}/\d{4})");
@@ -57,6 +93,15 @@ bool validarPrazo(const std::string& prazo) {
     if (dia < 1 || dia > diasNoMes[mes - 1]) return false;
     return true;
 }
+
+/**
+ * @brief Lê e valida um prazo digitado pelo usuário.
+ *
+ * Solicita repetidamente a entrada até que o formato DD/MM/AAAA seja válido
+ * ou o usuário pressione Enter para indicar tarefa sem prazo.
+ *
+ * @return String com o prazo válido ou string vazia se sem prazo.
+ */
 std::string lerPrazo() {
     std::string prazo;
     while (true) {
@@ -68,6 +113,13 @@ std::string lerPrazo() {
     }
 }
 
+/**
+ * @brief Lê e valida uma prioridade digitada pelo usuário.
+ *
+ * Solicita repetidamente até que o valor seja 0 (Baixa), 1 (Media) ou 2 (Alta).
+ *
+ * @return Enum Prioridade correspondente à escolha do usuário.
+ */
 Prioridade lerPrioridade() {
     while (true) {
         std::cout << "Prioridade (0=Baixa, 1=Media, 2=Alta): ";
@@ -79,14 +131,27 @@ Prioridade lerPrioridade() {
     }
 }
 
+/**
+ * @brief Solicita confirmação do usuário para uma ação.
+ * @param mensagem Texto da pergunta exibida.
+ * @return true se o usuário confirmar com 's' ou 'S', false caso contrário.
+ */
 bool confirmar(const std::string& mensagem) {
     std::cout << mensagem << " (s/n): ";
     char c; std::cin >> c; std::cin.ignore();
     return c == 's' || c == 'S';
 }
 
+/**
+ * @brief Exibe o submenu de listagem e filtragem de tarefas.
+ *
+ * Permite listar todas as tarefas ou filtrar por status, prioridade,
+ * categoria, tarefas vencidas ou data específica.
+ *
+ * @param g Referência ao gerenciador de tarefas.
+ */
 void menuListar(GerenciadorDeTarefas& g) {
-std::cout << "\n[1] Todas  [2] Por status  [3] Por prioridade  [4] Por categoria  [5] Vencidas  [6] Por data\n";
+    std::cout << "\n[1] Todas  [2] Por status  [3] Por prioridade  [4] Por categoria  [5] Vencidas  [6] Por data\n";
     std::cout << "Opcao: ";
     int op; std::cin >> op; std::cin.ignore();
 
@@ -103,7 +168,6 @@ std::cout << "\n[1] Todas  [2] Por status  [3] Por prioridade  [4] Por categoria
         exibirTarefas(g.filtrarPorPrioridade(lerPrioridade()));
 
     } else if (op == 4) {
-        // Exibe categorias disponíveis
         std::vector<std::string> cats = g.listarCategorias();
         if (cats.empty()) {
             std::cout << "Nenhuma categoria cadastrada.\n";
@@ -121,18 +185,28 @@ std::cout << "\n[1] Todas  [2] Por status  [3] Por prioridade  [4] Por categoria
         exibirTarefas(g.listarVencidas());
 
     } else if (op == 6) {
-    std::string data;
-    while (true) {
-        std::cout << "Data (DD/MM/AAAA): ";
-        std::getline(std::cin, data);
-        if (validarPrazo(data) && !data.empty()) break;
-        std::cout << "Formato invalido. Use DD/MM/AAAA (ex: 31/12/2025).\n";
-    } 
-    exibirTarefas(g.filtrarPorData(data));
-} else {
+        std::string data;
+        while (true) {
+            std::cout << "Data (DD/MM/AAAA): ";
+            std::getline(std::cin, data);
+            if (validarPrazo(data) && !data.empty()) break;
+            std::cout << "Formato invalido. Use DD/MM/AAAA (ex: 31/12/2025).\n";
+        }
+        exibirTarefas(g.filtrarPorData(data));
+    } else {
         std::cout << "Opcao invalida.\n";
     }
 }
+
+/**
+ * @brief Ponto de entrada da aplicação.
+ *
+ * Inicializa o GerenciadorDeTarefas, carrega os dados do arquivo e exibe
+ * o menu principal em loop até o usuário escolher sair (opção 0).
+ * Todas as exceções lançadas pelas operações são capturadas e exibidas.
+ *
+ * @return 0 em caso de execução bem-sucedida.
+ */
 int main() {
     GerenciadorDeTarefas gerenciador;
     gerenciador.carregar(ARQUIVO_DADOS);
@@ -162,7 +236,6 @@ int main() {
                 std::string prazo = lerPrazo();
                 Prioridade prio = lerPrioridade();
 
-                // Exibe categorias existentes como sugestao
                 std::vector<std::string> cats = gerenciador.listarCategorias();
                 if (!cats.empty()) {
                     std::cout << "Categorias existentes: ";

@@ -1,3 +1,8 @@
+/**
+ * @file Historico.cpp
+ * @brief Implementação da classe Historico.
+ */
+
 #include "Historico.h"
 #include <iostream>
 

@@ -1,3 +1,8 @@
+/**
+ * @file GerenciadorDeTarefas.cpp
+ * @brief Implementação da classe GerenciadorDeTarefas.
+ */
+
 #include "GerenciadorDeTarefas.h"
 #include "Arquivo.h"
 #include "TarefaComPrazo.h"
@@ -197,7 +202,6 @@ void GerenciadorDeTarefas::carregar(const std::string& caminho) {
     historico.registrarAcao("Tarefas carregadas de: " + caminho);
 }
 
-// busca por palavra
 std::vector<Tarefa*> GerenciadorDeTarefas::buscarPorTitulo(const std::string& termo) const {
     std::vector<Tarefa*> resultado;
     for (Tarefa* t : tarefas) {
@@ -208,7 +212,6 @@ std::vector<Tarefa*> GerenciadorDeTarefas::buscarPorTitulo(const std::string& te
     return resultado;
 }
 
-// exibe as estatisticas gerais do sistema
 void GerenciadorDeTarefas::exibirEstatisticas() const {
     if (tarefas.empty()) {
         std::cout << "Nenhuma tarefa cadastrada no momento.\n";

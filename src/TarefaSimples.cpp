@@ -1,3 +1,8 @@
+/**
+ * @file TarefaSimples.cpp
+ * @brief Implementação da classe TarefaSimples.
+ */
+
 #include "TarefaSimples.h"
 
 TarefaSimples::TarefaSimples(int id, const std::string& titulo, const std::string& descricao,

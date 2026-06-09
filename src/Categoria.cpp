@@ -1,3 +1,8 @@
+/**
+ * @file Categoria.cpp
+ * @brief Implementação da classe Categoria.
+ */
+
 #include "Categoria.h"
 
 Categoria::Categoria(int id, const std::string& nome) {

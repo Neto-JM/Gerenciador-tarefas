@@ -1,3 +1,8 @@
+/**
+ * @file Tarefa.cpp
+ * @brief Implementação da classe base Tarefa.
+ */
+
 #include "Tarefa.h"
 #include <ctime>
 #include <sstream>

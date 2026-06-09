@@ -1,0 +1,26 @@
+PROJECT_NAME           = "Gerenciador de Tarefas"
+PROJECT_BRIEF          = "Trabalho Pratico de PDS2 - 2026.1"
+
+OUTPUT_DIRECTORY       = docs
+
+INPUT                  = include src
+
+FILE_PATTERNS          = *.h *.cpp
+
+RECURSIVE              = YES
+
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = NO
+
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+
+QUIET                  = YES
+WARNINGS               = YES
+
+GENERATE_TREEVIEW      = YES
+FULL_SIDEBAR           = YES

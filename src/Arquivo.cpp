@@ -1,3 +1,8 @@
+/**
+ * @file Arquivo.cpp
+ * @brief Implementação da classe utilitária Arquivo para persistência de dados.
+ */
+
 #include "Arquivo.h"
 #include "Tarefa.h"
 #include "TarefaComPrazo.h"

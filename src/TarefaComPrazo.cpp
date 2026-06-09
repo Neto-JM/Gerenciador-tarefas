@@ -1,3 +1,8 @@
+/**
+ * @file TarefaComPrazo.cpp
+ * @brief Implementação da classe TarefaComPrazo.
+ */
+
 #include "TarefaComPrazo.h"
 #include <ctime>
 #include <sstream>

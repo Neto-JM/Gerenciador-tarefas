@@ -3,24 +3,42 @@
 
 #include <string>
 
+/**
+ * @brief Representa uma categoria de tarefas.
+ *
+ * Cada categoria possui um identificador numérico único e um nome.
+ * As categorias são usadas para agrupar e filtrar tarefas dentro do
+ * GerenciadorDeTarefas.
+ */
 class Categoria {
 private:
-    int id;
-    std::string nome;
+    int id;           ///< Identificador único da categoria
+    std::string nome; ///< Nome da categoria
 
 public:
-
-    // Construtor da categoria
-    // Deve inicializar o id e o nome da categoria
+    /**
+     * @brief Constrói uma categoria com id e nome fornecidos.
+     * @param id   Identificador único da categoria.
+     * @param nome Nome descritivo da categoria.
+     */
     Categoria(int id, const std::string& nome);
 
-    // Retorna o identificador da categoria
+    /**
+     * @brief Retorna o identificador da categoria.
+     * @return Inteiro com o id da categoria.
+     */
     int getId() const;
 
-    // Retorna o nome da categoria
+    /**
+     * @brief Retorna o nome da categoria.
+     * @return String com o nome da categoria.
+     */
     std::string getNome() const;
 
-    // Define um novo nome para a categoria
+    /**
+     * @brief Define um novo nome para a categoria.
+     * @param nome Novo nome a ser atribuído.
+     */
     void setNome(const std::string& nome);
 };
 

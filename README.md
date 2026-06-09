@@ -448,15 +448,80 @@ Durante o desenvolvimento foram consolidados conhecimentos sobre:
 
 ---
 
+
 # Contribuições da Equipe
 
-| Integrante                                                                        | Principais contribuições    |
-| --------------------------------------------------------------------------------- | --------------------------- |
-| Integrante 1                                                                      | Classe Tarefa               |
-| Integrante 2                                                                      | TarefaSimples               |
-| Integrante 3                                                                      | TarefaComPrazo              |
-| Integrante 4                                                                      | Categoria e Histórico       |
-| Integrante 5                                                                      | Gerenciador, Arquivo e Main |
-|                                                                                   |                             |
-| As contribuições podem ser verificadas através do histórico de commits do GitHub. |                             |
-|                                                                                   |                             |
+As contribuições dos integrantes podem ser verificadas através do histórico de commits do GitHub. Abaixo está um resumo das principais responsabilidades assumidas por cada membro durante o desenvolvimento do projeto.
+
+## Arthur Felipe Paredes Gonçalves
+
+* Configuração inicial do projeto.
+* Criação do Makefile.
+* Configuração do arquivo `.gitignore`.
+* Criação da estrutura inicial dos arquivos `.h` e `.cpp`.
+* Implementação do polimorfismo na hierarquia da classe `Tarefa`.
+* Implementação das classes:
+
+  * `TarefaSimples`
+  * `TarefaComPrazo`
+* Adequação do `main` para funcionamento com polimorfismo.
+* Implementação das funcionalidades de busca e estatísticas no menu principal.
+
+---
+
+## José Manoel Borges Neto
+
+* Implementação da classe `GerenciadorDeTarefas`:
+
+  * `GerenciadorDeTarefas.h`
+  * `GerenciadorDeTarefas.cpp`
+* Implementação da classe `Historico`:
+
+  * `Historico.h`
+  * `Historico.cpp`
+* Desenvolvimento e integração do `main.cpp`.
+* Adição da documentação Doxygen nos arquivos de cabeçalho.
+* Elaboração e manutenção do `README.md`.
+* Organização geral da integração entre os módulos do sistema.
+
+---
+
+## Ruan Cândido Fraga Vieira
+
+* Organização da estrutura de diretórios do projeto.
+* Implementação da classe `Categoria`:
+
+  * `Categoria.h`
+  * `Categoria.cpp`
+* Desenvolvimento da funcionalidade de busca por palavras-chave.
+* Implementação do acompanhamento e exibição de estatísticas do sistema.
+
+---
+
+## Luiza Ribeiro Tavares
+
+* Levantamento dos requisitos do sistema.
+* Elaboração da modelagem inicial (User Stories e Cartões CRC).
+* Implementação da classe `Tarefa`:
+
+  * `Tarefa.h`
+  * `Tarefa.cpp`
+* Desenvolvimento da funcionalidade de filtro de tarefas por data.
+
+---
+
+## Henrique Tomasi de Araújo
+
+* Desenvolvimento dos contratos iniciais dos arquivos de cabeçalho.
+* Implementação da classe `Arquivo`:
+
+  * `Arquivo.h`
+  * `Arquivo.cpp`
+* Correção e aprimoramento da validação de datas.
+* Ajuste da lógica de verificação de dias válidos em cada mês, impedindo datas inexistentes como 31 de abril, 31 de junho, entre outras.
+
+---
+
+## Considerações Finais
+
+O desenvolvimento foi realizado de forma colaborativa utilizando GitHub para controle de versão. Cada integrante contribuiu em diferentes etapas do projeto, incluindo análise, modelagem, implementação, documentação, testes e correções, permitindo a construção de uma solução completa para gerenciamento de tarefas utilizando os conceitos de Programação Orientada a Objetos estudados na disciplina de PDS2.

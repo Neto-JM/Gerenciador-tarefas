@@ -2,11 +2,11 @@
 
 ## Integrantes
 
-* Nome Integrante 1
-* Nome Integrante 2
-* Nome Integrante 3
-* Nome Integrante 4
-* Nome Integrante 5
+* Arthur Felipe Paredes Gonçalves
+* José Manoel Borges Neto
+* Ruan Cândido Fraga Vieira 
+* Luiza Rubeiro Tavares
+* Henrique Tomasi de Araujo
 
 ---
 
@@ -60,7 +60,7 @@ ou
 
 Vídeo de demonstração:
 
-INSERIR_LINK_DO_VIDEO_AQUI
+
 
 ---
 

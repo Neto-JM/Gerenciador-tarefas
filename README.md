@@ -322,17 +322,14 @@ catch(const std::exception& e)
 
 # Documentação Doxygen
 
-Para gerar a documentação:
+## Documentação
+Gerada com Doxygen. Acesse: https://neto-jm.github.io/Gerenciador-tarefas/
 
+Para gerar localmente:
 ```bash
 doxygen Doxyfile
 ```
-
-A documentação gerada ficará disponível em:
-
-```text
-docs/html/index.html
-```
+Abra `docs/index.html` no navegador.
 
 ---
 

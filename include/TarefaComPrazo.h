@@ -28,16 +28,7 @@ public:
                    Prioridade prioridade,
                    const std::string& categoria);
 
-    /**
-     * @brief Verifica se a tarefa passou da data limite.
-     *
-     * Compara o prazo armazenado com a data atual obtida do sistema.
-     * Tarefas já concluídas nunca são consideradas vencidas.
-     *
-     * @return true se o prazo já passou e a tarefa ainda está pendente,
-     *         false caso contrário.
-     */
-    bool estaVencida() const override;
+
 };
 
 #endif
